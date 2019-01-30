@@ -8,10 +8,10 @@
 
 #pragma once
 
-template <typename T> //���������������㷨��������x�ӵ�ǰ����ժ���������װΪһ�ö�����������
-BinTree<T>* BinTree<T>::secede ( BinNodePosi(T) x ) { //assert: xΪ�������еĺϷ�λ��
-   FromParentTo ( *x ) = NULL; //�ж����Ը��ڵ��ָ��
-   updateHeightAbove ( x->parent ); //����ԭ�����������ȵĸ߶�
-   BinTree<T>* S = new BinTree<T>; S->_root = x; x->parent = NULL; //������xΪ��
-   S->_size = x->size(); _size -= S->_size; return S; //���¹�ģ�����ط������������
+template <typename T> //浜屽弶鏍戝瓙鏍戝垎绂荤畻娉曪細灏嗗瓙鏍憍浠庡綋鍓嶆爲涓憳闄わ紝灏嗗叾灏佽涓轰竴妫电嫭绔嬪瓙鏍戣繑鍥?
+BinTree<T>* BinTree<T>::secede ( BinNodePosi(T) x ) { //assert: x涓轰簩鍙夋爲涓殑鍚堟硶浣嶇疆
+   FromParentTo ( *x ) = NULL; //鍒囨柇鏉ヨ嚜鐖惰妭鐐圭殑鎸囬拡
+   updateHeightAbove ( x->parent ); //鏇存柊鍘熸爲涓墍鏈夌鍏堢殑楂樺害
+   BinTree<T>* S = new BinTree<T>; S->_root = x; x->parent = NULL; //鏂版爲浠涓烘牴
+   S->_size = x->size(); _size -= S->_size; return S; //鏇存柊瑙勬ā锛岃繑鍥炲垎绂诲嚭鏉ョ殑瀛愭爲
 }

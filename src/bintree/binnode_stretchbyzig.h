@@ -8,7 +8,7 @@
 
 #pragma once
 
-//通过zig旋转调整，将子树x拉伸成最右侧通路
+//闁俺绻儂ig閺冨娴嗙拫鍐╂殻閿涘苯鐨㈢�涙劖鐖瞲閹峰鍑犻幋鎰付閸欏厖鏅堕柅姘崇熅
 template <typename T> void stretchByZig ( BinNodePosi(T) & x, int h ) {
    /*DSA*/   int c = 0;
    for ( BinNodePosi(T) v = x; v; v = v->rc ) {

@@ -9,10 +9,10 @@
 #pragma once
 
 template <typename T> BinNodePosi(T) BinTree<T>::insertAsRoot ( T const& e )
-{ _size = 1; return _root = new BinNode<T> ( e ); } //½«eµ±×÷¸ù½Úµã²åÈë¿ÕµÄ¶ş²æÊ÷
+{ _size = 1; return _root = new BinNode<T> ( e ); } //çå”€è¤°æ’²ç¶”éç¡…å¦­éè§„å½ƒéãƒ§â”–é¨å‹ªç°©é™å¤‹çˆ²
 
 template <typename T> BinNodePosi(T) BinTree<T>::insertAsLC ( BinNodePosi(T) x, T const& e )
-{ _size++; x->insertAsLC ( e ); updateHeightAbove ( x ); return x->lc; } //e²åÈëÎªxµÄ×óº¢×Ó
+{ _size++; x->insertAsLC ( e ); updateHeightAbove ( x ); return x->lc; } //eé»æ‘å†æ¶“ç°’é¨å‹«ä¹ç€›â•ç“™
 
 template <typename T> BinNodePosi(T) BinTree<T>::insertAsRC ( BinNodePosi(T) x, T const& e )
-{ _size++; x->insertAsRC ( e ); updateHeightAbove ( x ); return x->rc; } //e²åÈëÎªxµÄÓÒº¢×Ó
+{ _size++; x->insertAsRC ( e ); updateHeightAbove ( x ); return x->rc; } //eé»æ‘å†æ¶“ç°’é¨å‹«å½¸ç€›â•ç“™

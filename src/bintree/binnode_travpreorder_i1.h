@@ -8,12 +8,12 @@
 
 #pragma once
 
-template <typename T, typename VST> //Ԫ�����͡�������
-void travPre_I1 ( BinNodePosi(T) x, VST& visit ) { //��������������㷨��������#1��
-   Stack<BinNodePosi(T)> S; //����ջ
-   if ( x ) S.push ( x ); //���ڵ���ջ
-   while ( !S.empty() ) { //��ջ���֮ǰ����ѭ��
-      x = S.pop(); visit ( x->data ); //���������ʵ�ǰ�ڵ㣬��ǿպ��ӵ���ջ����Ϊ���Һ���
+template <typename T, typename VST> //鍏冪礌绫诲瀷銆佹搷浣滃櫒
+void travPre_I1 ( BinNodePosi(T) x, VST& visit ) { //浜屽弶鏍戝厛搴忛亶鍘嗙畻娉曪紙杩唬鐗?1锛?
+   Stack<BinNodePosi(T)> S; //杈呭姪鏍?
+   if ( x ) S.push ( x ); //鏍硅妭鐐瑰叆鏍?
+   while ( !S.empty() ) { //鍦ㄦ爤鍙樼┖涔嬪墠鍙嶅寰幆
+      x = S.pop(); visit ( x->data ); //寮瑰嚭骞惰闂綋鍓嶈妭鐐癸紝鍏堕潪绌哄瀛愮殑鍏ユ爤娆″簭涓哄厛鍙冲悗宸?
       if ( HasRChild ( *x ) ) S.push ( x->rc ); if ( HasLChild ( *x ) ) S.push ( x->lc );
    }
 }

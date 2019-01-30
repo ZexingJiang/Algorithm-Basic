@@ -8,9 +8,9 @@
 
 #pragma once
 
-#define IsBlack(p) ( ! (p) || ( RB_BLACK == (p)->color ) ) //Íâ²¿½ÚµãÒ²ÊÓ×÷ºÚ½Úµã
-#define IsRed(p) ( ! IsBlack(p) ) //·ÇºÚ¼´ºì
-#define BlackHeightUpdated(x) ( /*RedBlack¸ß¶È¸üĞÂÌõ¼ş*/ \
+#define IsBlack(p) ( ! (p) || ( RB_BLACK == (p)->color ) ) //æ¾¶æ ­å„´é‘ºå‚œå£æ¶”ç†»î‹æµ£æ»ˆç²¦é‘ºå‚œå£
+#define IsRed(p) ( ! IsBlack(p) ) //é—ˆç‚ºç²¦é—å´‡å­©
+#define BlackHeightUpdated(x) ( /*RedBlackæ¥‚æ¨ºå®³é‡å­˜æŸŠé‰â€²æ¬¢*/ \
    ( stature( (x).lc ) == stature( (x).rc ) ) && \
    ( (x).height == ( IsRed(& x) ? stature( (x).lc ) : stature( (x).lc ) + 1 ) ) \
 )

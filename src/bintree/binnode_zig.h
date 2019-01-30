@@ -8,7 +8,7 @@
 
 #pragma once
 
-template <typename T> BinNodePosi(T) BinNode<T>::zig() { //˳ʱ����ת
+template <typename T> BinNodePosi(T) BinNode<T>::zig() { //椤烘椂閽堟棆杞?
    BinNodePosi(T) lChild = lc;
    lChild->parent = this->parent;
    if ( lChild->parent )

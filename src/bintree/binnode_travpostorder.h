@@ -8,13 +8,13 @@
 
 #pragma once
 
-/*DSA*/#include "../stack/Stack.h" //ÒıÈëÕ»Ä£°åÀà
+/*DSA*/#include "../stack/Stack.h" //å¯®æ›å†éå ŸÄé‰è·¨è¢«
 /*DSA*/#include "BinNode_TravPostorder_R.h"
 /*DSA*/#include "BinNode_TravPostorder_I.h"
-template <typename T> template <typename VST> //ÔªËØÀàĞÍ¡¢²Ù×÷Æ÷
-void BinNode<T>::travPost ( VST& visit ) { //¶ş²æÊ÷ºóĞò±éÀúËã·¨Í³Ò»Èë¿Ú
-   switch ( rand() % 2 ) { //´Ë´¦ÔİËæ»úÑ¡ÔñÒÔ×ö²âÊÔ£¬¹²Á½ÖÖÑ¡Ôñ
-      case 1: travPost_I ( this, visit ); break; //µü´ú°æ
-      default: travPost_R ( this, visit ); break; //µİ¹é°æ
+template <typename T> template <typename VST> //éå†ªç¤Œç»«è¯²ç€·éŠ†ä½¹æ·æµ£æ»ƒæ«’
+void BinNode<T>::travPost ( VST& visit ) { //æµœå±½å¼¶éæˆæ‚—æ´å¿›äº¶é˜å—™ç•»å¨‰æ› ç²ºæ¶“â‚¬éãƒ¥å½›
+   switch ( rand() % 2 ) { //å§ã‚…î˜©é†å‚æ®¢éˆæ´ªâ‚¬å¤‹å«¨æµ ãƒ¥ä»›å¨´å¬­ç˜¯é”›å±½å¡æ¶“ã‚‡î’é–«å¤‹å«¨
+      case 1: travPost_I ( this, visit ); break; //æ©î…å”¬é—?
+      default: travPost_R ( this, visit ); break; //é–«æ‘ç¶Šé—?
    }
 }

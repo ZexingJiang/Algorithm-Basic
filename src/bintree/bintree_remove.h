@@ -8,15 +8,15 @@
 
 #pragma once
 
-template <typename T> //É¾³ı¶ş²æÊ÷ÖĞÎ»ÖÃx´¦µÄ½Úµã¼°Æäºó´ú£¬·µ»Ø±»É¾³ı½ÚµãµÄÊıÖµ
-int BinTree<T>::remove ( BinNodePosi(T) x ) { //assert: xÎª¶ş²æÊ÷ÖĞµÄºÏ·¨Î»ÖÃ
-   FromParentTo ( *x ) = NULL; //ÇĞ¶ÏÀ´×Ô¸¸½ÚµãµÄÖ¸Õë
-   updateHeightAbove ( x->parent ); //¸üĞÂ×æÏÈ¸ß¶È
-   int n = removeAt ( x ); _size -= n; return n; //É¾³ı×ÓÊ÷x£¬¸üĞÂ¹æÄ££¬·µ»ØÉ¾³ı½Úµã×ÜÊı
+template <typename T> //é’çŠ»æ«æµœå±½å¼¶éæˆœè…‘æµ£å¶‡ç–†xæ¾¶å‹­æ®‘é‘ºå‚œå£é™å©‚å¾éšåºå”¬é”›å²ƒç¹‘é¥ç‚¶î¦é’çŠ»æ«é‘ºå‚œå£é¨å‹¬æšŸéŠ?
+int BinTree<T>::remove ( BinNodePosi(T) x ) { //assert: xæ¶“è½°ç°©é™å¤‹çˆ²æ¶“î… æ®‘éšå Ÿç¡¶æµ£å¶‡ç–†
+   FromParentTo ( *x ) = NULL; //é’å›¨æŸ‡é‰ãƒ¨åšœé–æƒ°å¦­éåœ­æ®‘é¸å›¬æ‹¡
+   updateHeightAbove ( x->parent ); //é‡å­˜æŸŠç»æ §å›æ¥‚æ¨ºå®³
+   int n = removeAt ( x ); _size -= n; return n; //é’çŠ»æ«ç€›æ„­çˆ²xé”›å±¾æ´¿é‚æ‹Œî‰å¦¯â˜…ç´æ©æ–¿æ´–é’çŠ»æ«é‘ºå‚œå£é¬ç»˜æšŸ
 }
-template <typename T> //É¾³ı¶ş²æÊ÷ÖĞÎ»ÖÃx´¦µÄ½Úµã¼°Æäºó´ú£¬·µ»Ø±»É¾³ı½ÚµãµÄÊıÖµ
-static int removeAt ( BinNodePosi(T) x ) { //assert: xÎª¶ş²æÊ÷ÖĞµÄºÏ·¨Î»ÖÃ
-   if ( !x ) return 0; //µİ¹é»ù£º¿ÕÊ÷
-   int n = 1 + removeAt ( x->lc ) + removeAt ( x->rc ); //µİ¹éÊÍ·Å×ó¡¢ÓÒ×ÓÊ÷
-   release ( x->data ); release ( x ); return n; //ÊÍ·Å±»Õª³ı½Úµã£¬²¢·µ»ØÉ¾³ı½Úµã×ÜÊı
+template <typename T> //é’çŠ»æ«æµœå±½å¼¶éæˆœè…‘æµ£å¶‡ç–†xæ¾¶å‹­æ®‘é‘ºå‚œå£é™å©‚å¾éšåºå”¬é”›å²ƒç¹‘é¥ç‚¶î¦é’çŠ»æ«é‘ºå‚œå£é¨å‹¬æšŸéŠ?
+static int removeAt ( BinNodePosi(T) x ) { //assert: xæ¶“è½°ç°©é™å¤‹çˆ²æ¶“î… æ®‘éšå Ÿç¡¶æµ£å¶‡ç–†
+   if ( !x ) return 0; //é–«æ‘ç¶Šé©çŒ´ç´°ç»Œçƒ˜çˆ²
+   int n = 1 + removeAt ( x->lc ) + removeAt ( x->rc ); //é–«æ‘ç¶Šé–²å©ƒæ–å®¸ï¸ºâ‚¬ä½¸å½¸ç€›æ„­çˆ²
+   release ( x->data ); release ( x ); return n; //é–²å©ƒæ–çšî‚£æ†³é—„ã‚ˆå¦­éç™¸ç´éªæƒ°ç¹‘é¥ç‚²å¹é—„ã‚ˆå¦­éè§„â‚¬ç»˜æšŸ
 }

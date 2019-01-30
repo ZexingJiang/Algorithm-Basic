@@ -8,8 +8,8 @@
 
 #pragma once
 
-template <typename T, typename VST> //ÔªËØÀàĞÍ¡¢²Ù×÷Æ÷
-void travPost_R ( BinNodePosi(T) x, VST& visit ) { //¶ş²æÊ÷ºóĞò±éÀúËã·¨£¨µİ¹é°æ£©
+template <typename T, typename VST> //éå†ªç¤Œç»«è¯²ç€·éŠ†ä½¹æ·æµ£æ»ƒæ«’
+void travPost_R ( BinNodePosi(T) x, VST& visit ) { //æµœå±½å¼¶éæˆæ‚—æ´å¿›äº¶é˜å—™ç•»å¨‰æ›ªç´™é–«æ‘ç¶Šé—å ¬ç´š
    if ( !x ) return;
    travPost_R ( x->lc, visit );
    travPost_R ( x->rc, visit );

@@ -8,8 +8,8 @@
 
 #pragma once
 
-/*DSA*/#define HeightUpdated(x) /*¸ß¶È¸üĞÂ³£¹æÌõ¼ş*/ \
+/*DSA*/#define HeightUpdated(x) /*æ¥‚æ¨ºå®³é‡å­˜æŸŠç”¯æ­Œî‰é‰â€²æ¬¢*/ \
 /*DSA*/        ( (x).height == 1 + max( stature( (x).lc ), stature( (x).rc ) ) )
-#define Balanced(x) ( stature( (x).lc ) == stature( (x).rc ) ) //ÀíÏëÆ½ºâÌõ¼ş
-#define BalFac(x) ( stature( (x).lc ) - stature( (x).rc ) ) //Æ½ºâÒò×Ó
-#define AvlBalanced(x) ( ( -2 < BalFac(x) ) && ( BalFac(x) < 2 ) ) //AVLÆ½ºâÌõ¼ş
+#define Balanced(x) ( stature( (x).lc ) == stature( (x).rc ) ) //éå—˜å…‚éªå® ã€€é‰â€²æ¬¢
+#define BalFac(x) ( stature( (x).lc ) - stature( (x).rc ) ) //éªå® ã€€é¥çŠ²ç“™
+#define AvlBalanced(x) ( ( -2 < BalFac(x) ) && ( BalFac(x) < 2 ) ) //AVLéªå® ã€€é‰â€²æ¬¢

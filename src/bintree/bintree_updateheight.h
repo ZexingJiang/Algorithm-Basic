@@ -8,8 +8,8 @@
 
 #pragma once
 
-template <typename T> int BinTree<T>::updateHeight ( BinNodePosi(T) x ) //¸üĞÂ½Úµãx¸ß¶È
-{ return x->height = 1 + max ( stature ( x->lc ), stature ( x->rc ) ); } //¾ßÌå¹æÔò£¬ÒòÊ÷¶øÒì
+template <typename T> int BinTree<T>::updateHeight ( BinNodePosi(T) x ) //é‡å­˜æŸŠé‘ºå‚œå£xæ¥‚æ¨ºå®³
+{ return x->height = 1 + max ( stature ( x->lc ), stature ( x->rc ) ); } //éèœ‚ç¶‹ç‘™å‹«å¯é”›å±½æ´œéæˆ£â‚¬å±½ç´“
 
-template <typename T> void BinTree<T>::updateHeightAbove ( BinNodePosi(T) x ) //¸üĞÂ¸ß¶È
-{ while ( x ) { updateHeight ( x ); x = x->parent; } } //´Óx³ö·¢£¬¸²¸ÇÀú´ú×æÏÈ¡£¿ÉÓÅ»¯
+template <typename T> void BinTree<T>::updateHeightAbove ( BinNodePosi(T) x ) //é‡å­˜æŸŠæ¥‚æ¨ºå®³
+{ while ( x ) { updateHeight ( x ); x = x->parent; } } //æµ å·Ÿé‘å“„å½‚é”›å²ƒî›«é©æ §å·»æµ ï½‡îš›éå ›â‚¬å‚šå½²æµ¼æ¨ºå¯²

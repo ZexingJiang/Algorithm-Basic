@@ -8,14 +8,14 @@
 
 #pragma once
 
-/*DSA*/#include "../queue/queue.h" //ÒıÈë¶ÓÁĞ
-template <typename T> template <typename VST> //ÔªËØÀàĞÍ¡¢²Ù×÷Æ÷
-void BinNode<T>::travLevel ( VST& visit ) { //¶ş²æÊ÷²ã´Î±éÀúËã·¨
-   Queue<BinNodePosi(T)> Q; //¸¨Öú¶ÓÁĞ
-   Q.enqueue ( this ); //¸ù½ÚµãÈë¶Ó
-   while ( !Q.empty() ) { //ÔÚ¶ÓÁĞÔÙ´Î±ä¿ÕÖ®Ç°£¬·´¸´µü´ú
-      BinNodePosi(T) x = Q.dequeue(); visit ( x->data ); //È¡³ö¶ÓÊ×½Úµã²¢·ÃÎÊÖ®
-      if ( HasLChild ( *x ) ) Q.enqueue ( x->lc ); //×óº¢×ÓÈë¶Ó
-      if ( HasRChild ( *x ) ) Q.enqueue ( x->rc ); //ÓÒº¢×ÓÈë¶Ó
+/*DSA*/#include "../queue/queue.h" //å¯®æ›å†é—ƒç†·åª
+template <typename T> template <typename VST> //éå†ªç¤Œç»«è¯²ç€·éŠ†ä½¹æ·æµ£æ»ƒæ«’
+void BinNode<T>::travLevel ( VST& visit ) { //æµœå±½å¼¶éæˆçœ°å¨†ï¿ äº¶é˜å—™ç•»å¨‰?
+   Queue<BinNodePosi(T)> Q; //æˆå‘­å§ªé—ƒç†·åª
+   Q.enqueue ( this ); //éç¡…å¦­éç‘°å†é—ƒ?
+   while ( !Q.empty() ) { //é¦ã„©æ§¦é’æ¥€å•€å¨†â€³å½‰ç»Œè½°ç®£é“å¶ç´é™å¶…î˜²æ©î…å”¬
+      BinNodePosi(T) x = Q.dequeue(); visit ( x->data ); //é™æ §åš­é—ƒç†¼î›»é‘ºå‚œå£éªæƒ°î†–é—‚î†»ç®£
+      if ( HasLChild ( *x ) ) Q.enqueue ( x->lc ); //å®¸ï¹€î„¢ç€›æ„¬å†é—ƒ?
+      if ( HasRChild ( *x ) ) Q.enqueue ( x->rc ); //é™å†²î„¢ç€›æ„¬å†é—ƒ?
    }
 }
