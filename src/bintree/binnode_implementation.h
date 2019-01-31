@@ -9,19 +9,19 @@
 #pragma once
 
 /******************************************************************************************
- * 灏咮inNode鍚勬柟娉曠殑瀹炵幇閮ㄥ垎锛岀畝娲佸湴寮曞叆BinNode.h
- * 鏁堟灉绛夊悓浜庡皢杩欎簺瀹炵幇鐩存帴姹囧叆BinNode.h
- * 鍦╡xport灏氭湭琚紪璇戝櫒鏀寔鍓嶏紝濡傛鍙皢瀹氫箟涓庡疄鐜板垎绂伙紝浠ヤ究璇剧▼璁茶В
+ * 将BinNode各方法的实现部分，简洁地引入BinNode.h
+ * 效果等同于将这些实现直接汇入BinNode.h
+ * 在export尚未被编译器支持前，如此可将定义与实现分离，以便课程讲解
  ******************************************************************************************/
 #include "BinNode_macro.h"
-#include "BinNode_size.h" //鍚庝唬鏁扮洰
-#include "BinNode_insert.h" //鎻掑叆
-#include "BinNode_succ.h" //鍙栬妭鐐瑰悗缁?
-#include "BinNode_travPreorder.h" //鍏堝簭閬嶅巻
-#include "BinNode_travInorder.h" //涓簭閬嶅巻
-#include "BinNode_travPostorder.h" //鍚庡簭閬嶅巻
-#include "BinNode_travLevel.h" //灞傛閬嶅巻
-#include "BinNode_zig.h" //椤烘椂閽堟棆杞?
-#include "BinNode_zag.h" //閫嗘椂閽堟棆杞?
+#include "BinNode_size.h" //后代数目
+#include "BinNode_insert.h" //插入
+#include "BinNode_succ.h" //取节点后继
+#include "BinNode_travPreorder.h" //先序遍历
+#include "BinNode_travInorder.h" //中序遍历
+#include "BinNode_travPostorder.h" //后序遍历
+#include "BinNode_travLevel.h" //层次遍历
+#include "BinNode_zig.h" //顺时针旋转
+#include "BinNode_zag.h" //逆时针旋转
 #include "BinNode_stretchByZig.h"
 #include "BinNode_stretchByZag.h"

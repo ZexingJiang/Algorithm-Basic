@@ -8,40 +8,40 @@
 
 #pragma once
 
-#include "BinNode.h" //寮曞叆浜屽弶鏍戣妭鐐圭被
-template <typename T> class BinTree { //浜屽弶鏍戞ā鏉跨被
+#include "BinNode.h" //引入二叉树节点类
+template <typename T> class BinTree { //二叉树模板类
 protected:
-   int _size; BinNodePosi(T) _root; //瑙勬ā銆佹牴鑺傜偣
-   virtual int updateHeight ( BinNodePosi(T) x ); //鏇存柊鑺傜偣x鐨勯珮搴?
-   void updateHeightAbove ( BinNodePosi(T) x ); //鏇存柊鑺傜偣x鍙婂叾绁栧厛鐨勯珮搴?
+   int _size; BinNodePosi(T) _root; //规模、根节点
+   virtual int updateHeight ( BinNodePosi(T) x ); //更新节点x的高度
+   void updateHeightAbove ( BinNodePosi(T) x ); //更新节点x及其祖先的高度
 public:
-   BinTree() : _size ( 0 ), _root ( NULL ) { } //鏋勯€犲嚱鏁?
-   ~BinTree() { if ( 0 < _size ) remove ( _root ); } //鏋愭瀯鍑芥暟
-   int size() const { return _size; } //瑙勬ā
-   bool empty() const { return !_root; } //鍒ょ┖
-   BinNodePosi(T) root() const { return _root; } //鏍戞牴
-   BinNodePosi(T) insertAsRoot ( T const& e ); //鎻掑叆鏍硅妭鐐?
-   BinNodePosi(T) insertAsLC ( BinNodePosi(T) x, T const& e ); //e浣滀负x鐨勫乏瀛╁瓙锛堝師鏃狅級鎻掑叆
-   BinNodePosi(T) insertAsRC ( BinNodePosi(T) x, T const& e ); //e浣滀负x鐨勫彸瀛╁瓙锛堝師鏃狅級鎻掑叆
-   BinNodePosi(T) attachAsLC ( BinNodePosi(T) x, BinTree<T>* &T ); //T浣滀负x宸﹀瓙鏍戞帴鍏?
-   BinNodePosi(T) attachAsRC ( BinNodePosi(T) x, BinTree<T>* &T ); //T浣滀负x鍙冲瓙鏍戞帴鍏?
-   int remove ( BinNodePosi(T) x ); //鍒犻櫎浠ヤ綅缃畑澶勮妭鐐逛负鏍圭殑瀛愭爲锛岃繑鍥炶瀛愭爲鍘熷厛鐨勮妯?
-   BinTree<T>* secede ( BinNodePosi(T) x ); //灏嗗瓙鏍憍浠庡綋鍓嶆爲涓憳闄わ紝骞跺皢鍏惰浆鎹负涓€妫电嫭绔嬪瓙鏍?
-   template <typename VST> //鎿嶄綔鍣?
-   void travLevel ( VST& visit ) { if ( _root ) _root->travLevel ( visit ); } //灞傛閬嶅巻
-   template <typename VST> //鎿嶄綔鍣?
-   void travPre ( VST& visit ) { if ( _root ) _root->travPre ( visit ); } //鍏堝簭閬嶅巻
-   template <typename VST> //鎿嶄綔鍣?
-   void travIn ( VST& visit ) { if ( _root ) _root->travIn ( visit ); } //涓簭閬嶅巻
-   template <typename VST> //鎿嶄綔鍣?
-   void travPost ( VST& visit ) { if ( _root ) _root->travPost ( visit ); } //鍚庡簭閬嶅巻
-   bool operator< ( BinTree<T> const& t ) //姣旇緝鍣紙鍏朵綑鑷琛ュ厖锛?
+   BinTree() : _size ( 0 ), _root ( NULL ) { } //构造函数
+   ~BinTree() { if ( 0 < _size ) remove ( _root ); } //析构函数
+   int size() const { return _size; } //规模
+   bool empty() const { return !_root; } //判空
+   BinNodePosi(T) root() const { return _root; } //树根
+   BinNodePosi(T) insertAsRoot ( T const& e ); //插入根节点
+   BinNodePosi(T) insertAsLC ( BinNodePosi(T) x, T const& e ); //e作为x的左孩子（原无）插入
+   BinNodePosi(T) insertAsRC ( BinNodePosi(T) x, T const& e ); //e作为x的右孩子（原无）插入
+   BinNodePosi(T) attachAsLC ( BinNodePosi(T) x, BinTree<T>* &T ); //T作为x左子树接入
+   BinNodePosi(T) attachAsRC ( BinNodePosi(T) x, BinTree<T>* &T ); //T作为x右子树接入
+   int remove ( BinNodePosi(T) x ); //删除以位置x处节点为根的子树，返回该子树原先的规模
+   BinTree<T>* secede ( BinNodePosi(T) x ); //将子树x从当前树中摘除，并将其转换为一棵独立子树
+   template <typename VST> //操作器
+   void travLevel ( VST& visit ) { if ( _root ) _root->travLevel ( visit ); } //层次遍历
+   template <typename VST> //操作器
+   void travPre ( VST& visit ) { if ( _root ) _root->travPre ( visit ); } //先序遍历
+   template <typename VST> //操作器
+   void travIn ( VST& visit ) { if ( _root ) _root->travIn ( visit ); } //中序遍历
+   template <typename VST> //操作器
+   void travPost ( VST& visit ) { if ( _root ) _root->travPost ( visit ); } //后序遍历
+   bool operator< ( BinTree<T> const& t ) //比较器（其余自行补充）
    { return _root && t._root && lt ( _root, t._root ); }
-   bool operator== ( BinTree<T> const& t ) //鍒ょ瓑鍣?
+   bool operator== ( BinTree<T> const& t ) //判等器
    { return _root && t._root && ( _root == t._root ); }
    /*DSA*/
-   /*DSA*/void stretchToLPath() { stretchByZag ( _root ); } //鍊熷姪zag鏃嬭浆锛岃浆鍖栦负宸﹀悜鍗曢摼
-   /*DSA*/void stretchToRPath() { stretchByZig ( _root, _size ); } //鍊熷姪zig鏃嬭浆锛岃浆鍖栦负鍙冲悜鍗曢摼
+   /*DSA*/void stretchToLPath() { stretchByZag ( _root ); } //借助zag旋转，转化为左向单链
+   /*DSA*/void stretchToRPath() { stretchByZig ( _root, _size ); } //借助zig旋转，转化为右向单链
 }; //BinTree
 
 #include "BinTree_implementation.h"

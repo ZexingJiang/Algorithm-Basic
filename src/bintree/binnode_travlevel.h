@@ -8,14 +8,14 @@
 
 #pragma once
 
-/*DSA*/#include "../queue/queue.h" //寮曞叆闃熷垪
-template <typename T> template <typename VST> //鍏冪礌绫诲瀷銆佹搷浣滃櫒
-void BinNode<T>::travLevel ( VST& visit ) { //浜屽弶鏍戝眰娆￠亶鍘嗙畻娉?
-   Queue<BinNodePosi(T)> Q; //杈呭姪闃熷垪
-   Q.enqueue ( this ); //鏍硅妭鐐瑰叆闃?
-   while ( !Q.empty() ) { //鍦ㄩ槦鍒楀啀娆″彉绌轰箣鍓嶏紝鍙嶅杩唬
-      BinNodePosi(T) x = Q.dequeue(); visit ( x->data ); //鍙栧嚭闃熼鑺傜偣骞惰闂箣
-      if ( HasLChild ( *x ) ) Q.enqueue ( x->lc ); //宸﹀瀛愬叆闃?
-      if ( HasRChild ( *x ) ) Q.enqueue ( x->rc ); //鍙冲瀛愬叆闃?
+/*DSA*/#include "../queue/queue.h" //引入队列
+template <typename T> template <typename VST> //元素类型、操作器
+void BinNode<T>::travLevel ( VST& visit ) { //二叉树层次遍历算法
+   Queue<BinNodePosi(T)> Q; //辅助队列
+   Q.enqueue ( this ); //根节点入队
+   while ( !Q.empty() ) { //在队列再次变空之前，反复迭代
+      BinNodePosi(T) x = Q.dequeue(); visit ( x->data ); //取出队首节点并访问之
+      if ( HasLChild ( *x ) ) Q.enqueue ( x->lc ); //左孩子入队
+      if ( HasRChild ( *x ) ) Q.enqueue ( x->rc ); //右孩子入队
    }
 }

@@ -9,7 +9,7 @@
 #pragma once
 
 template <typename T> BinNodePosi(T) BinNode<T>::insertAsLC ( T const& e )
-{ return lc = new BinNode ( e, this ); } //灏唀浣滀负褰撳墠鑺傜偣鐨勫乏瀛╁瓙鎻掑叆浜屽弶鏍?
+{ return lc = new BinNode ( e, this ); } //将e作为当前节点的左孩子插入二叉树
 
 template <typename T> BinNodePosi(T) BinNode<T>::insertAsRC ( T const& e )
-{ return rc = new BinNode ( e, this ); } //灏唀浣滀负褰撳墠鑺傜偣鐨勫彸瀛╁瓙鎻掑叆浜屽弶鏍?
+{ return rc = new BinNode ( e, this ); } //将e作为当前节点的右孩子插入二叉树

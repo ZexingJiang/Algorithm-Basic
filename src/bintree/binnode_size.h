@@ -8,9 +8,9 @@
 
 #pragma once
 
-template <typename T> int BinNode<T>::size() { //缁熻褰撳墠鑺傜偣鍚庝唬鎬绘暟锛屽嵆浠ュ叾涓烘牴鐨勫瓙鏍戣妯?
-   int s = 1; //璁″叆鏈韩
-   if ( lc ) s += lc->size(); //閫掑綊璁″叆宸﹀瓙鏍戣妯?
-   if ( rc ) s += rc->size(); //閫掑綊璁″叆鍙冲瓙鏍戣妯?
+template <typename T> int BinNode<T>::size() { //统计当前节点后代总数，即以其为根的子树规模
+   int s = 1; //计入本身
+   if ( lc ) s += lc->size(); //递归计入左子树规模
+   if ( rc ) s += rc->size(); //递归计入右子树规模
    return s;
 }

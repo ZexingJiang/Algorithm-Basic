@@ -8,18 +8,18 @@
 
 #pragma once
 
-template <typename T> //浠庡綋鍓嶈妭鐐瑰嚭鍙戯紝娌垮乏鍒嗘敮涓嶆柇娣卞叆锛岀洿鑷虫病鏈夊乏鍒嗘敮鐨勮妭鐐?
+template <typename T> //从当前节点出发，沿左分支不断深入，直至没有左分支的节点
 static void goAlongLeftBranch ( BinNodePosi(T) x, Stack<BinNodePosi(T)>& S ) {
-   while ( x ) { S.push ( x ); x = x->lc; } //褰撳墠鑺傜偣鍏ユ爤鍚庨殢鍗冲悜宸︿晶鍒嗘敮娣卞叆锛岃凯浠ｇ洿鍒版棤宸﹀瀛?
+   while ( x ) { S.push ( x ); x = x->lc; } //当前节点入栈后随即向左侧分支深入，迭代直到无左孩子
 }
 
-template <typename T, typename VST> //鍏冪礌绫诲瀷銆佹搷浣滃櫒
-void travIn_I1 ( BinNodePosi(T) x, VST& visit ) { //浜屽弶鏍戜腑搴忛亶鍘嗙畻娉曪紙杩唬鐗?1锛?
-   Stack<BinNodePosi(T)> S; //杈呭姪鏍?
+template <typename T, typename VST> //元素类型、操作器
+void travIn_I1 ( BinNodePosi(T) x, VST& visit ) { //二叉树中序遍历算法（迭代版#1）
+   Stack<BinNodePosi(T)> S; //辅助栈
    while ( true ) {
-      goAlongLeftBranch ( x, S ); //浠庡綋鍓嶈妭鐐瑰嚭鍙戯紝閫愭壒鍏ユ爤
-      if ( S.empty() ) break; //鐩磋嚦鎵€鏈夎妭鐐瑰鐞嗗畬姣?
-      x = S.pop(); visit ( x->data ); //寮瑰嚭鏍堥《鑺傜偣骞惰闂箣
-      x = x->rc; //杞悜鍙冲瓙鏍?
+      goAlongLeftBranch ( x, S ); //从当前节点出发，逐批入栈
+      if ( S.empty() ) break; //直至所有节点处理完毕
+      x = S.pop(); visit ( x->data ); //弹出栈顶节点并访问之
+      x = x->rc; //转向右子树
    }
 }

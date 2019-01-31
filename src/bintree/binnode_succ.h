@@ -8,14 +8,14 @@
 
 #pragma once
 
-template <typename T> BinNodePosi(T) BinNode<T>::succ() { //瀹氫綅鑺傜偣v鐨勭洿鎺ュ悗缁?
-   BinNodePosi(T) s = this; //璁板綍鍚庣户鐨勪复鏃跺彉閲?
-   if ( rc ) { //鑻ユ湁鍙冲瀛愶紝鍒欑洿鎺ュ悗缁у繀鍦ㄥ彸瀛愭爲涓紝鍏蜂綋鍦板氨鏄?
-      s = rc; //鍙冲瓙鏍戜腑
-      while ( HasLChild ( *s ) ) s = s->lc; //鏈€闈犲乏锛堟渶灏忥級鐨勮妭鐐?
-   } else { //鍚﹀垯锛岀洿鎺ュ悗缁у簲鏄€滃皢褰撳墠鑺傜偣鍖呭惈浜庡叾宸﹀瓙鏍戜腑鐨勬渶浣庣鍏堚€濓紝鍏蜂綋鍦板氨鏄?
-      while ( IsRChild ( *s ) ) s = s->parent; //閫嗗悜鍦版部鍙冲悜鍒嗘敮锛屼笉鏂湞宸︿笂鏂圭Щ鍔?
-      s = s->parent; //鏈€鍚庡啀鏈濆彸涓婃柟绉诲姩涓€姝ワ紝鍗虫姷杈剧洿鎺ュ悗缁э紙濡傛灉瀛樺湪锛?
+template <typename T> BinNodePosi(T) BinNode<T>::succ() { //定位节点v的直接后继
+   BinNodePosi(T) s = this; //记录后继的临时变量
+   if ( rc ) { //若有右孩子，则直接后继必在右子树中，具体地就是
+      s = rc; //右子树中
+      while ( HasLChild ( *s ) ) s = s->lc; //最靠左（最小）的节点
+   } else { //否则，直接后继应是“将当前节点包含于其左子树中的最低祖先”，具体地就是
+      while ( IsRChild ( *s ) ) s = s->parent; //逆向地沿右向分支，不断朝左上方移动
+      s = s->parent; //最后再朝右上方移动一步，即抵达直接后继（如果存在）
    }
    return s;
 }

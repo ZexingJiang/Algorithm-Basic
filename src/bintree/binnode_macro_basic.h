@@ -9,7 +9,7 @@
 #pragma once
 
 /******************************************************************************************
- * BinNode鐘舵€佷笌鎬ц川鐨勫垽鏂?
+ * BinNode状态与性质的判断
  ******************************************************************************************/
 #define IsRoot(x) ( ! ( (x).parent ) )
 #define IsLChild(x) ( ! IsRoot(x) && ( & (x) == (x).parent->lc ) )
@@ -17,18 +17,18 @@
 #define HasParent(x) ( ! IsRoot(x) )
 #define HasLChild(x) ( (x).lc )
 #define HasRChild(x) ( (x).rc )
-#define HasChild(x) ( HasLChild(x) || HasRChild(x) ) //鑷冲皯鎷ユ湁涓€涓瀛?
-#define HasBothChild(x) ( HasLChild(x) && HasRChild(x) ) //鍚屾椂鎷ユ湁涓や釜瀛╁瓙
+#define HasChild(x) ( HasLChild(x) || HasRChild(x) ) //至少拥有一个孩子
+#define HasBothChild(x) ( HasLChild(x) && HasRChild(x) ) //同时拥有两个孩子
 #define IsLeaf(x) ( ! HasChild(x) )
 
 /******************************************************************************************
- * 涓嶣inNode鍏锋湁鐗瑰畾鍏崇郴鐨勮妭鐐瑰強鎸囬拡
+ * 与BinNode具有特定关系的节点及指针
  ******************************************************************************************/
-#define sibling(p) /*鍏勫紵*/ \
+#define sibling(p) /*兄弟*/ \
    ( IsLChild( * (p) ) ? (p)->parent->rc : (p)->parent->lc )
 
-#define uncle(x) /*鍙斿彅*/ \
+#define uncle(x) /*叔叔*/ \
    ( IsLChild( * ( (x)->parent ) ) ? (x)->parent->parent->rc : (x)->parent->parent->lc )
 
-#define FromParentTo(x) /*鏉ヨ嚜鐖朵翰鐨勫紩鐢?/ \
+#define FromParentTo(x) /*来自父亲的引用*/ \
    ( IsRoot(x) ? _root : ( IsLChild(x) ? (x).parent->lc : (x).parent->rc ) )

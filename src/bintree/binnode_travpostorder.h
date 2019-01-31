@@ -8,13 +8,13 @@
 
 #pragma once
 
-/*DSA*/#include "../stack/Stack.h" //寮曞叆鏍堟ā鏉跨被
+/*DSA*/#include "../stack/Stack.h" //引入栈模板类
 /*DSA*/#include "BinNode_TravPostorder_R.h"
 /*DSA*/#include "BinNode_TravPostorder_I.h"
-template <typename T> template <typename VST> //鍏冪礌绫诲瀷銆佹搷浣滃櫒
-void BinNode<T>::travPost ( VST& visit ) { //浜屽弶鏍戝悗搴忛亶鍘嗙畻娉曠粺涓€鍏ュ彛
-   switch ( rand() % 2 ) { //姝ゅ鏆傞殢鏈洪€夋嫨浠ュ仛娴嬭瘯锛屽叡涓ょ閫夋嫨
-      case 1: travPost_I ( this, visit ); break; //杩唬鐗?
-      default: travPost_R ( this, visit ); break; //閫掑綊鐗?
+template <typename T> template <typename VST> //元素类型、操作器
+void BinNode<T>::travPost ( VST& visit ) { //二叉树后序遍历算法统一入口
+   switch ( rand() % 2 ) { //此处暂随机选择以做测试，共两种选择
+      case 1: travPost_I ( this, visit ); break; //迭代版
+      default: travPost_R ( this, visit ); break; //递归版
    }
 }

@@ -8,10 +8,10 @@
 
 #pragma once
 
-template <typename T> //浜屽弶鏍戝瓙鏍戝垎绂荤畻娉曪細灏嗗瓙鏍憍浠庡綋鍓嶆爲涓憳闄わ紝灏嗗叾灏佽涓轰竴妫电嫭绔嬪瓙鏍戣繑鍥?
-BinTree<T>* BinTree<T>::secede ( BinNodePosi(T) x ) { //assert: x涓轰簩鍙夋爲涓殑鍚堟硶浣嶇疆
-   FromParentTo ( *x ) = NULL; //鍒囨柇鏉ヨ嚜鐖惰妭鐐圭殑鎸囬拡
-   updateHeightAbove ( x->parent ); //鏇存柊鍘熸爲涓墍鏈夌鍏堢殑楂樺害
-   BinTree<T>* S = new BinTree<T>; S->_root = x; x->parent = NULL; //鏂版爲浠涓烘牴
-   S->_size = x->size(); _size -= S->_size; return S; //鏇存柊瑙勬ā锛岃繑鍥炲垎绂诲嚭鏉ョ殑瀛愭爲
+template <typename T> //二叉树子树分离算法：将子树x从当前树中摘除，将其封装为一棵独立子树返回
+BinTree<T>* BinTree<T>::secede ( BinNodePosi(T) x ) { //assert: x为二叉树中的合法位置
+   FromParentTo ( *x ) = NULL; //切断来自父节点的指针
+   updateHeightAbove ( x->parent ); //更新原树中所有祖先的高度
+   BinTree<T>* S = new BinTree<T>; S->_root = x; x->parent = NULL; //新树以x为根
+   S->_size = x->size(); _size -= S->_size; return S; //更新规模，返回分离出来的子树
 }

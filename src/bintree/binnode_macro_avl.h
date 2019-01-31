@@ -8,8 +8,8 @@
 
 #pragma once
 
-/*DSA*/#define HeightUpdated(x) /*楂樺害鏇存柊甯歌鏉′欢*/ \
+/*DSA*/#define HeightUpdated(x) /*高度更新常规条件*/ \
 /*DSA*/        ( (x).height == 1 + max( stature( (x).lc ), stature( (x).rc ) ) )
-#define Balanced(x) ( stature( (x).lc ) == stature( (x).rc ) ) //鐞嗘兂骞宠　鏉′欢
-#define BalFac(x) ( stature( (x).lc ) - stature( (x).rc ) ) //骞宠　鍥犲瓙
-#define AvlBalanced(x) ( ( -2 < BalFac(x) ) && ( BalFac(x) < 2 ) ) //AVL骞宠　鏉′欢
+#define Balanced(x) ( stature( (x).lc ) == stature( (x).rc ) ) //理想平衡条件
+#define BalFac(x) ( stature( (x).lc ) - stature( (x).rc ) ) //平衡因子
+#define AvlBalanced(x) ( ( -2 < BalFac(x) ) && ( BalFac(x) < 2 ) ) //AVL平衡条件

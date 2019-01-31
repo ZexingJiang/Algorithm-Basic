@@ -8,7 +8,7 @@
 
 #pragma once
 
-template <typename T> BinNodePosi(T) BinNode<T>::zag() { //閫嗘椂閽堟棆杞?
+template <typename T> BinNodePosi(T) BinNode<T>::zag() { //逆时针旋转
    BinNodePosi(T) rChild = rc;
    rChild->parent = this->parent;
    if ( rChild->parent )

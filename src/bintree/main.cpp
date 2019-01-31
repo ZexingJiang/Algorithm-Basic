@@ -8,19 +8,19 @@
 
 #include "binTree_test.h"
 
-int testID = 0; //娴嬭瘯缂栧彿
+int testID = 0; //测试编号
 
-// 闅忔満鐢熸垚鏈熸湜楂樺害涓篽鐨勪簩鍙夋爲
+// 随机生成期望高度为h的二叉树
 template <typename T> bool randomBinTree ( BinTree<T> & bt, BinNodePosi(T) x, int h ) {
-   if ( 0 >= h ) return false; //鑷冲h灞?
-   if ( 0 < dice ( h ) ) //浠?/h鐨勬鐜囩粓姝㈠綋鍓嶅垎鏀殑鐢熼暱
+   if ( 0 >= h ) return false; //至多h层
+   if ( 0 < dice ( h ) ) //以1/h的概率终止当前分支的生长
       randomBinTree ( bt, bt.insertAsLC ( x, dice ( ( T ) h * h * h ) ), h - 1 );
-   if ( 0 < dice ( h ) ) //浠?/h鐨勬鐜囩粓姝㈠綋鍓嶅垎鏀殑鐢熼暱
+   if ( 0 < dice ( h ) ) //以1/h的概率终止当前分支的生长
       randomBinTree ( bt, bt.insertAsRC ( x, dice ( ( T ) h * h * h ) ), h - 1 );
    return true;
 }
 
-// 鍦ㄤ簩鍙夋爲涓殢鏈虹‘瀹氫竴涓妭鐐逛綅缃?
+// 在二叉树中随机确定一个节点位置
 template <typename T> BinNodePosi(T) randomPosiInBinTree ( BinNodePosi(T) root ) {
    if ( !HasChild ( *root ) ) return root;
    if ( !HasLChild ( *root ) )
@@ -32,7 +32,7 @@ template <typename T> BinNodePosi(T) randomPosiInBinTree ( BinNodePosi(T) root )
           randomPosiInBinTree ( root->rc ) ;
 }
 
-template <typename T> void   testBinTree ( int h ) { //娴嬭瘯浜屽弶鏍?
+template <typename T> void   testBinTree ( int h ) { //测试二叉树
    printf ( "\n  ==== Test %2d. Generate a binTree of height <= %d \n", testID++, h );
    BinTree<T> bt; print ( bt );
    bt.insertAsRoot ( dice ( ( T ) h * h * h ) ); print ( bt );
@@ -45,7 +45,7 @@ template <typename T> void   testBinTree ( int h ) { //娴嬭瘯浜屽弶鏍?
    Hailstone<T> he; bt.travIn ( he ); print ( bt );
    printf ( "\n  ==== Test %2d. Remove/release subtrees in the Tree\n", testID++ );
    while ( !bt.empty() ) {
-      BinNodePosi(T) p = randomPosiInBinTree ( bt.root() ); //闅忔満閫夋嫨涓€涓妭鐐?
+      BinNodePosi(T) p = randomPosiInBinTree ( bt.root() ); //随机选择一个节点
       if ( dice ( 2 ) ) {
          printf ( "removing " ); print ( p->data ); printf ( " ...\n" );
          printf ( "%d node(s) removed\n", bt.remove ( p ) ); print ( bt );
@@ -57,9 +57,9 @@ template <typename T> void   testBinTree ( int h ) { //娴嬭瘯浜屽弶鏍?
    }
 }
 
-int main ( int argc, char* argv[] ) { //娴嬭瘯浜屽弶鏍?
+int main ( int argc, char* argv[] ) { //测试二叉树
    if ( 2 > argc ) { printf ( "Usage: %s <size of test>\a\a\n", argv[0] ); return 1; }
    srand ( ( unsigned int ) time ( NULL ) );
-   testBinTree<int> ( atoi ( argv[1] ) ); //鍏冪礌绫诲瀷鍙互鍦ㄨ繖閲屼换鎰忛€夋嫨
+   testBinTree<int> ( atoi ( argv[1] ) ); //元素类型可以在这里任意选择
    return 0;
 }

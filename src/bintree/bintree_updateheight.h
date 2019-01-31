@@ -8,8 +8,8 @@
 
 #pragma once
 
-template <typename T> int BinTree<T>::updateHeight ( BinNodePosi(T) x ) //鏇存柊鑺傜偣x楂樺害
-{ return x->height = 1 + max ( stature ( x->lc ), stature ( x->rc ) ); } //鍏蜂綋瑙勫垯锛屽洜鏍戣€屽紓
+template <typename T> int BinTree<T>::updateHeight ( BinNodePosi(T) x ) //更新节点x高度
+{ return x->height = 1 + max ( stature ( x->lc ), stature ( x->rc ) ); } //具体规则，因树而异
 
-template <typename T> void BinTree<T>::updateHeightAbove ( BinNodePosi(T) x ) //鏇存柊楂樺害
-{ while ( x ) { updateHeight ( x ); x = x->parent; } } //浠巟鍑哄彂锛岃鐩栧巻浠ｇ鍏堛€傚彲浼樺寲
+template <typename T> void BinTree<T>::updateHeightAbove ( BinNodePosi(T) x ) //更新高度
+{ while ( x ) { updateHeight ( x ); x = x->parent; } } //从x出发，覆盖历代祖先。可优化

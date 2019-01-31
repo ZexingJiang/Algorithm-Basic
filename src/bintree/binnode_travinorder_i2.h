@@ -8,17 +8,17 @@
 
 #pragma once
 
-template <typename T, typename VST> //鍏冪礌绫诲瀷銆佹搷浣滃櫒
-void travIn_I2 ( BinNodePosi(T) x, VST& visit ) { //浜屽弶鏍戜腑搴忛亶鍘嗙畻娉曪紙杩唬鐗?2锛?
-   Stack<BinNodePosi(T)> S; //杈呭姪鏍?
+template <typename T, typename VST> //元素类型、操作器
+void travIn_I2 ( BinNodePosi(T) x, VST& visit ) { //二叉树中序遍历算法（迭代版#2）
+   Stack<BinNodePosi(T)> S; //辅助栈
    while ( true )
       if ( x ) {
-         S.push ( x ); //鏍硅妭鐐硅繘鏍?
-         x = x->lc; //娣卞叆閬嶅巻宸﹀瓙鏍?
+         S.push ( x ); //根节点进栈
+         x = x->lc; //深入遍历左子树
       } else if ( !S.empty() ) {
-         x = S.pop(); //灏氭湭璁块棶鐨勬渶浣庣鍏堣妭鐐归€€鏍?
-         visit ( x->data ); //璁块棶璇ョ鍏堣妭鐐?
-         x = x->rc; //閬嶅巻绁栧厛鐨勫彸瀛愭爲
+         x = S.pop(); //尚未访问的最低祖先节点退栈
+         visit ( x->data ); //访问该祖先节点
+         x = x->rc; //遍历祖先的右子树
       } else
-         break; //閬嶅巻瀹屾垚
+         break; //遍历完成
 }

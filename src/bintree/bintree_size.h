@@ -8,6 +8,6 @@
 
 #pragma once
 
-template <typename T> //缁熻浜屽弶鏍戝瓙鏍戣妯?
-int BinTree<T>::size ( BinNodePosi(T) x ) //assert: x涓轰簩鍙夋爲涓殑鍚堟硶浣嶇疆
+template <typename T> //统计二叉树子树规模
+int BinTree<T>::size ( BinNodePosi(T) x ) //assert: x为二叉树中的合法位置
 {  return x ? size ( x->lc ) + size ( x->RChild ) : 0;  }
